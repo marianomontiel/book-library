@@ -1,0 +1,16 @@
+:root {
+    --card-gray: lightgray;
+
+}
+
+#output {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: auto auto auto;
+    gap: 10px;
+}
+
+#output > div {
+    background-color: ;
+    border: 3px solid var(--card-gray);
+}

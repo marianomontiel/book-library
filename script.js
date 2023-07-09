@@ -1,45 +1,53 @@
 function Book(title, author, pages, read) {
     this.title = title,
-    this.author = author,
-    this.pages = pages,
-    this.read = read,
-    this.bookStats = function () {
-        if (this.read === 0) {
-            return (this.title + " by " + this.author + ", " + this.pages + " pages, " + "not read yet")
-        } else {
-            return (this.title + " by " + this.author + ", " + this.pages + " pages, " + "read")
+        this.author = author,
+        this.pages = pages,
+        this.read = read,
+        this.bookStats = function () {
+            if (this.read === 0) {
+                return (this.title + " by " + this.author + ", " + this.pages + " pages, " + "not read yet")
+            } else {
+                return (this.title + " by " + this.author + ", " + this.pages + " pages, " + "read")
+            }
         }
-    }
     this.bookCards = function () {
-        const newCard = document.createElement("div")
+        const newCard = document.createElement("div");
+        newCard.classList.add('book-card');
+        const titleDiv = document.createElement("div");
+        titleDiv.classList.add('titles');
+        const removeDiv = document.createElement("div");
+        removeDiv.classList.add('remove')
+
         const featuredBooks = document.querySelector(".featured-books")
         const removeButton = document.createElement("button");
-        removeButton.innerText = "Remove";
-        
+        removeButton.innerText = "X";
+
         const newTitle = document.createElement("p")
         newTitle.id = title;
         newTitle.innerHTML = "<strong>Title: </strong>" + this.title;
-        newCard.appendChild(newTitle);
+        titleDiv.appendChild(newTitle);
 
         const newAuthor = document.createElement("p")
         newAuthor.id = author;
         newAuthor.innerHTML = "<strong>Author: </strong>" + this.author;
-        newCard.appendChild(newAuthor);
+        titleDiv.appendChild(newAuthor);
 
         const newPages = document.createElement("p")
         newPages.id = pages;
         newPages.innerHTML = "<strong>Pages: </strong>" + this.pages;
-        newCard.appendChild(newPages);
+        titleDiv.appendChild(newPages);
 
         const newRead = document.createElement("p")
         newRead.id = read;
         newRead.innerHTML = "<strong>Read: </strong>" + this.read;
-        newCard.appendChild(newRead);
+        titleDiv.appendChild(newRead);
 
         featuredBooks.appendChild(newCard);
-        newCard.appendChild(removeButton);
+        newCard.appendChild(removeDiv);
+        removeDiv.appendChild(removeButton);
+        newCard.appendChild(titleDiv);
 
-        removeButton.addEventListener("click", function(){
+        removeButton.addEventListener("click", function () {
             featuredBooks.removeChild(newCard);
         })
 
@@ -62,8 +70,8 @@ const addButton = document.querySelector("#add").addEventListener("click", funct
     const bookRead = document.querySelector("input[name='read']").checked;
 
     addBookToLibrary(bookTitle, bookAuthor, bookPages, bookRead);
-    
-    
+
+
     const addBook = new Book(bookTitle, bookAuthor, bookPages, bookRead)
     addBook.bookCards();
 
@@ -71,16 +79,26 @@ const addButton = document.querySelector("#add").addEventListener("click", funct
     form.reset();
 })
 
-const addBookForm = document.getElementById("add-book").addEventListener("click", function(){
-    const form = document.querySelector("form");
+const addBookForm = document.querySelector(".add-book").addEventListener("click", function () {
+    const form = document.querySelector(".form");
 
     if (form.classList.value === 'form active') {
-        form.classList.remove('active')    
+        form.classList.remove('active')
     } else {
         form.classList.add('active')
     }
 
 })
 
+const closeBookForm = document.querySelector(".close-form").addEventListener("click", function () {
+    const form = document.querySelector(".form");
+
+    if (form.classList.value === 'form active') {
+        form.classList.remove('active')
+    } else {
+        form.classList.add('active')
+    }
+
+})
 
 

@@ -12,9 +12,37 @@ function Book(title, author, pages, read) {
     }
     this.bookCards = function () {
         const newCard = document.createElement("div")
-        const outputDiv = document.querySelector("#output");
-        newCard.innerText = this.bookStats();
-        outputDiv.appendChild(newCard);
+        const featuredBooks = document.querySelector(".featured-books")
+        const removeButton = document.createElement("button");
+        removeButton.innerText = "Remove";
+        
+        const newTitle = document.createElement("p")
+        newTitle.id = title;
+        newTitle.innerHTML = "<strong>Title: </strong>" + this.title;
+        newCard.appendChild(newTitle);
+
+        const newAuthor = document.createElement("p")
+        newAuthor.id = author;
+        newAuthor.innerHTML = "<strong>Author: </strong>" + this.author;
+        newCard.appendChild(newAuthor);
+
+        const newPages = document.createElement("p")
+        newPages.id = pages;
+        newPages.innerHTML = "<strong>Pages: </strong>" + this.pages;
+        newCard.appendChild(newPages);
+
+        const newRead = document.createElement("p")
+        newRead.id = read;
+        newRead.innerHTML = "<strong>Read: </strong>" + this.read;
+        newCard.appendChild(newRead);
+
+        featuredBooks.appendChild(newCard);
+        newCard.appendChild(removeButton);
+
+        removeButton.addEventListener("click", function(){
+            featuredBooks.removeChild(newCard);
+        })
+
     }
 }
 
@@ -27,7 +55,7 @@ function addBookToLibrary(title, author, pages, read) {
     console.log(myLibrary)
 }
 
-const addButton = document.querySelector("button").addEventListener("click", function () {
+const addButton = document.querySelector("#add").addEventListener("click", function () {
     const bookTitle = document.querySelector("input[name='title']").value
     const bookAuthor = document.querySelector("input[name='author']").value
     const bookPages = document.querySelector("input[name='pages']").value
@@ -38,6 +66,20 @@ const addButton = document.querySelector("button").addEventListener("click", fun
     
     const addBook = new Book(bookTitle, bookAuthor, bookPages, bookRead)
     addBook.bookCards();
+
+    event.preventDefault();
+    form.reset();
+})
+
+const addBookForm = document.getElementById("add-book").addEventListener("click", function(){
+    const form = document.querySelector("form");
+
+    if (form.classList.value === 'form active') {
+        form.classList.remove('active')    
+    } else {
+        form.classList.add('active')
+    }
+
 })
 
 

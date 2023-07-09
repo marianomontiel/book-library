@@ -1,16 +1,106 @@
 :root {
     --card-gray: lightgray;
+    --card-background: #a2a2a2;
 
 }
 
-#output {
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Set styles for header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+}
+
+nav ul {
+    list-style-type: none;
+}
+
+nav ul li {
+    display: inline-block;
+    margin-right: 10px;
+}
+
+nav ul li a {
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Set styles for main sections */
+main {
+    min-height: 80vh;
+    padding: 20px;
+}
+
+section {
+    margin-bottom: 20px;
+}
+
+section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.featured-books {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     grid-template-rows: auto auto auto;
     gap: 10px;
 }
 
-#output > div {
-    background-color: ;
+.featured-books > div {
+    background-color: var(--card-background);
     border: 3px solid var(--card-gray);
+}
+
+.featured-books > h2 {
+    display: block;
+}
+
+/* Set styles for footer */
+footer {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+}
+
+#form{
+    display: flex;
+    justify-content: center;
+}
+
+.form.active {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+.form {
+    display: none;
+}
+
+form > div {
+    margin: 5px;
+}
+
+form > button {
+    width: 230px;
+    height: 25px;
+}
+
+label {
+    display: inline-block;
+    width: 50px;
 }

@@ -11,44 +11,35 @@
 
 <body>
   <header>
-    <h1>Welcome to the Book Library</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Browse Books</a></li>
-        <li><a href="#" id="add-book">Add Book</a></li>
-        <li><a href="#">Contact Us</a></li>
-      </ul>
-    </nav>
+    <h1 style="display: inline-block;">Book Library</h1>
+    <button>Log In</button>
   </header>
-  
-  <form action="" class="form">
-    <h3 style="text-align: center">Add book</h3>
-    <div>
-      <label for="title">title</label><input name="title" type="text" />
-    </div>
-    <div>
-      <label for="author">author</label><input name="author" type="text" />
-    </div>
-    <div>
-      <label for="pages">pages</label><input name="pages" type="text" />
-    </div>
-    <div>
-      <label for="read">read?</label><input name="read" type="checkbox" />
-    </div>
-    <button id="add">Add</button>
-
-  </form>
+  <!-- <button id="add-book">Add Book</button> -->
   
   <main>
     <section class="featured-books">
       <h2>Featured Books</h2>
       <!-- Display featured books here -->
-    </section>
-
-    <section class="popular-books">
-      <h2>Popular Books</h2>
-      <!-- Display popular books here -->
+      <div id="add-book" style="padding: 130px 80px;">
+        <img src="./sources/add-button.png" alt="" style="width: 50px;">
+        <form action="" class="form">
+          <h3 style="text-align: center">Add book</h3>
+          <div>
+            <label for="title">title</label><input name="title" type="text" />
+          </div>
+          <div>
+            <label for="author">author</label><input name="author" type="text" />
+          </div>
+          <div>
+            <label for="pages">pages</label><input name="pages" type="text" />
+          </div>
+          <div>
+            <label for="read">read?</label><input name="read" type="checkbox" />
+          </div>
+          <button id="add">Add</button>
+      
+        </form>
+      </div>
     </section>
   </main>
 

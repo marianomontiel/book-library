@@ -4,7 +4,8 @@
     --card-gray: lightgray;
     --card-background: #a2a2a2;
     --form-width: 315px;
-    --form-height: calc(var(--form-width)* 2 / 3)
+    --form-height: calc(var(--form-width)* 2 / 3);
+    --body-height: 0;
 }
 
 /* Reset default styles */
@@ -124,7 +125,7 @@ footer {
 }
 
 .form.active {
-    display: flex;
+    display: block;
     position: absolute;
     top: 0%;
     justify-content: center;
@@ -141,7 +142,7 @@ footer {
 form {
     font-family: Roboto;
     position: absolute;
-    top: 50%;
+    top: 300px;
     left: 50%;
     transform: translate(-50%, -50%);
     display: flex;

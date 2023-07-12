@@ -65,7 +65,7 @@ function addBookToLibrary(title, author, pages, read) {
 
 const addButton = document.querySelector("#add").addEventListener("click", function () {
     event.preventDefault();
-    
+
     const title = document.getElementById('title').checkValidity();
     const author = document.getElementById('author').checkValidity();
     const pages = document.getElementById('pages').checkValidity();
@@ -76,13 +76,13 @@ const addButton = document.querySelector("#add").addEventListener("click", funct
         const bookAuthor = document.querySelector("input[name='author']").value
         const bookPages = document.querySelector("input[name='pages']").value
         const bookRead = document.querySelector("input[name='read']").checked;
-    
+
         addBookToLibrary(bookTitle, bookAuthor, bookPages, bookRead);
-    
-    
+
+
         const addBook = new Book(bookTitle, bookAuthor, bookPages, bookRead)
         addBook.bookCards();
-        
+
         const form = document.querySelector("form");
         form.reset();
         requiredFieldText.innerText = ""
@@ -92,22 +92,28 @@ const addButton = document.querySelector("#add").addEventListener("click", funct
         closeBookForm.dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true }));
     } else {
         requiredFieldText.innerText = "Please fill the required fields"
-        
-     }
-    
+
+    }
+
 })
 
 const triggerFormDisplay = document.querySelectorAll("#open-close-form");
 
 triggerFormDisplay.forEach((button) => {
-  button.addEventListener("click", function () {
-    const form = document.querySelector(".form");
+    button.addEventListener("click", function () {
+        const form = document.querySelector(".form");
 
-    if (form.classList.value === 'form active') {
-        form.classList.remove('active')
-    } else {
-        form.classList.add('active')
-    }
-  });
+        if (form.classList.value === 'form active') {
+            form.classList.remove('active')
+        } else {
+            form.classList.add('active')
+        }
+
+        //resize background form div larger
+        const divForm = document.querySelector("#form-div");
+        const bodyHeight = document.querySelector('body').clientHeight;
+        divForm.style.height = `${bodyHeight}px`;
+    });
 });
+
 

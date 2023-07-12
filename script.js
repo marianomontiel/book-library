@@ -64,22 +64,43 @@ function addBookToLibrary(title, author, pages, read) {
 }
 
 const addButton = document.querySelector("#add").addEventListener("click", function () {
-    const bookTitle = document.querySelector("input[name='title']").value
-    const bookAuthor = document.querySelector("input[name='author']").value
-    const bookPages = document.querySelector("input[name='pages']").value
-    const bookRead = document.querySelector("input[name='read']").checked;
-
-    addBookToLibrary(bookTitle, bookAuthor, bookPages, bookRead);
-
-
-    const addBook = new Book(bookTitle, bookAuthor, bookPages, bookRead)
-    addBook.bookCards();
-
     event.preventDefault();
-    form.reset();
+    
+    const title = document.getElementById('title').checkValidity();
+    const author = document.getElementById('author').checkValidity();
+    const pages = document.getElementById('pages').checkValidity();
+
+    const requiredFieldText = document.querySelector("form > p");
+    if (title && author && pages) {
+        const bookTitle = document.querySelector("input[name='title']").value
+        const bookAuthor = document.querySelector("input[name='author']").value
+        const bookPages = document.querySelector("input[name='pages']").value
+        const bookRead = document.querySelector("input[name='read']").checked;
+    
+        addBookToLibrary(bookTitle, bookAuthor, bookPages, bookRead);
+    
+    
+        const addBook = new Book(bookTitle, bookAuthor, bookPages, bookRead)
+        addBook.bookCards();
+        
+        const form = document.querySelector("form");
+        form.reset();
+        requiredFieldText.innerText = ""
+
+        //close window after adding book
+        const closeBookForm = document.querySelector("#open-close-form")
+        closeBookForm.dispatchEvent(new MouseEvent('click', { view: window, bubbles: true, cancelable: true }));
+    } else {
+        requiredFieldText.innerText = "Please fill the required fields"
+        
+     }
+    
 })
 
-const addBookForm = document.querySelector(".add-book").addEventListener("click", function () {
+const triggerFormDisplay = document.querySelectorAll("#open-close-form");
+
+triggerFormDisplay.forEach((button) => {
+  button.addEventListener("click", function () {
     const form = document.querySelector(".form");
 
     if (form.classList.value === 'form active') {
@@ -87,18 +108,6 @@ const addBookForm = document.querySelector(".add-book").addEventListener("click"
     } else {
         form.classList.add('active')
     }
-
-})
-
-const closeBookForm = document.querySelector(".close-form").addEventListener("click", function () {
-    const form = document.querySelector(".form");
-
-    if (form.classList.value === 'form active') {
-        form.classList.remove('active')
-    } else {
-        form.classList.add('active')
-    }
-
-})
-
+  });
+});
 

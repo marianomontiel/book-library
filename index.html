@@ -17,23 +17,24 @@
   <div class="form">
     <div>
       <form action="" class="">
-        <h3 style="text-align: center">Add book</h3>
+        <img src="./sources/close.png" class="close-form" id="open-close-form" alt="">
+        <h3>ADD BOOK</h3>
         <div>
-          <label for="title">title</label><input name="title" type="text" />
+          <label for="title">title</label><input name="title" type="text" id="title" required/>
         </div>
         <div>
-          <label for="author">author</label><input name="author" type="text" />
+          <label for="author">author</label><input name="author" type="text" id="author" required/>
         </div>
         <div>
-          <label for="pages">pages</label><input name="pages" type="text" />
+          <label for="pages">pages</label><input name="pages" type="text" id="pages" required/>
         </div>
         <div>
           <label for="read">read?</label><input name="read" type="checkbox" />
         </div>
+        <p></p>
         <button id="add">Add</button>
     
       </form>
-      <button class="close-form">X</button>
     </div>
   </div>
   
@@ -41,7 +42,7 @@
     <h2>Featured Books</h2>
     <section class="featured-books">
       <!-- Display featured books here -->
-      <div class="add-book">
+      <div class="add-book" id="open-close-form">
         <img src="./sources/add-button.png" alt="" id="add-button">
       </div>
     </section>

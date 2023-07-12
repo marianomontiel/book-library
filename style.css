@@ -3,7 +3,8 @@
 :root {
     --card-gray: lightgray;
     --card-background: #a2a2a2;
-
+    --form-width: 315px;
+    --form-height: calc(var(--form-width)* 2 / 3)
 }
 
 /* Reset default styles */
@@ -101,15 +102,13 @@ section h2 {
 }
 
 .close-form {
-    position: relative;
-    top: -100px;
-    right: -140px;
-    transform: translate(100%, 100%);
+    position: absolute;
+    top: 2%;
+    right: 1%;
+    cursor: pointer;
     border-radius: 50%;
-    height: 20px;
-    width: 20px;
-    border: solid 2px black;
-    background-color: rgba(255,255,255,1);
+    height: 15px;
+    width: 15px;
 }
 
 .book-card>.titles {
@@ -140,6 +139,7 @@ footer {
 }
 
 form {
+    font-family: Roboto;
     position: absolute;
     top: 50%;
     left: 50%;
@@ -147,14 +147,15 @@ form {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
     padding: 15px;
-    height: 200px;
-    width: 280px;
+    width: var(--form-width);
     background-color: white;
 }
 
 form>div {
+    display: flex;
+    justify-content: flex-start;
+    width: 235px;
     margin: 5px;
 }
 
@@ -163,7 +164,20 @@ form>button {
     height: 25px;
 }
 
+form>h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+form > p {
+    font-size: 11px;
+    height: 16px;
+    margin-bottom: 7px;
+    color: red;
+}
+
 label {
+    font-weight: 500;
     display: inline-block;
     width: 50px;
 }
